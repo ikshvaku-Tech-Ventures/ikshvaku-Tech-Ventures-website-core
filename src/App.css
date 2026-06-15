@@ -1,0 +1,14 @@
+/* App-specific component styles */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex-grow: 1;
+  padding-top: 80px; /* offset header height */
+  position: relative;
+  z-index: 1;
+}

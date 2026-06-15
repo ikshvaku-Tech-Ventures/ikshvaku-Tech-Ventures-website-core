@@ -1,0 +1,119 @@
+/* PitchForm — minimal, clean */
+.pitch {
+  padding: 8rem 0;
+}
+
+.pitch-intro {
+  max-width: 560px;
+  margin-bottom: 4rem;
+}
+
+.pitch-intro h2 {
+  margin-bottom: 1.5rem;
+}
+
+.pitch-intro p {
+  font-size: 1.05rem;
+}
+
+.pitch-form-wrap {
+  max-width: 640px;
+  border-top: 1px solid var(--border);
+  padding-top: 3rem;
+}
+
+.pitch-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  color: var(--text-heading);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-bottom-color: var(--dawn);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.7;
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.submit-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+/* Success */
+.success-view {
+  max-width: 480px;
+  padding: 4rem 0;
+}
+
+.success-view h3 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--text-heading);
+  margin-bottom: 1.25rem;
+}
+
+.success-view p {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

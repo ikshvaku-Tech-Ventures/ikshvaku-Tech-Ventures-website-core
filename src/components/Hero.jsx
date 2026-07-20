@@ -102,9 +102,9 @@ export default function Hero({ onNavigate, onLogoComplete }) {
 
           <div className="hero-line hero-line--3">
             <p className="hero-subtitle">
-              We architect intelligent systems rooted in clarity and purpose — 
-              Agentic AI, Geospatial intelligence, and sovereign digital 
-              infrastructure for the organizations shaping tomorrow.
+              Guided by the yoga of action and clarity of purpose, we are a pioneer product building and design firm. 
+              We apply advanced engineering to distributed systems and design frugal, intelligent AI solutions to build 
+              the organizations of tomorrow.
             </p>
           </div>
 

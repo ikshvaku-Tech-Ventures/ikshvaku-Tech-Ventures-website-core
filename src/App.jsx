@@ -47,8 +47,8 @@ function App() {
               <div className="footer-brand">
                 <h3>Ikshvaku</h3>
                 <p>
-                  Technology and applied artificial intelligence —
-                  engineering what endures.
+                  Technology and applied artificial intelligence.
+                  Engineering what endures.
                 </p>
               </div>
 

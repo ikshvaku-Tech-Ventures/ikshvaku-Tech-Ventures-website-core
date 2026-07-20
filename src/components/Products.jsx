@@ -91,19 +91,26 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Slide 4: Capabilities */}
+      {/* Slide 3: Capabilities */}
       <section className="product-slide capabilities-slide">
-        <div className="container">
-          <h2 className="slide-title">Core Capabilities</h2>
-          <hr className="divider" />
-          <div className="capabilities-grid">
+        <div className="container capabilities-container">
+          <div className="capabilities-header">
+            <span className="section-label">Foundational</span>
+            <h2 className="slide-title">Core Capabilities.</h2>
+          </div>
+          
+          <div className="capabilities-list">
             {capabilities.map((cap) => (
-              <div key={cap.num} className="capability-card">
-                <span className="cap-num">{cap.num}</span>
-                <h3>{cap.title}</h3>
-                <p>{cap.desc}</p>
-                <div className="cap-tags">
-                  {cap.tags.map(t => <span key={t} className="cap-tag">{t}</span>)}
+              <div key={cap.num} className="capability-row">
+                <div className="cap-row-left">
+                  <span className="cap-num">{cap.num}</span>
+                  <h3>{cap.title}</h3>
+                </div>
+                <div className="cap-row-right">
+                  <p>{cap.desc}</p>
+                  <div className="cap-tags">
+                    {cap.tags.map(t => <span key={t} className="cap-tag">{t}</span>)}
+                  </div>
                 </div>
               </div>
             ))}

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import './Header.css';
 
-export default function Header({ activeTab, setActiveTab }) {
+export default function Header({ activeTab, setActiveTab, showNavButtons = true }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -19,7 +19,7 @@ export default function Header({ activeTab, setActiveTab }) {
   };
 
   return (
-    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+    <header className={`header ${scrolled ? 'scrolled' : ''} ${!showNavButtons ? 'header--hidden' : ''}`}>
       <div className="container header-container">
         <button onClick={() => nav('home')} className="logo-link">
           <img src="/logo.png" alt="Ikshvaku" className="logo-icon" />

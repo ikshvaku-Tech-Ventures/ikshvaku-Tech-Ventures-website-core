@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,6 +7,7 @@ import PitchForm from './components/PitchForm';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [logoCompleted, setLogoCompleted] = useState(activeTab !== 'home');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'light');
@@ -14,21 +15,26 @@ function App() {
 
   const navigate = (tab) => {
     setActiveTab(tab);
+    setLogoCompleted(tab !== 'home');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleLogoComplete = useCallback(() => {
+    setLogoCompleted(true);
+  }, []);
 
   const renderPage = () => {
     switch (activeTab) {
       case 'about': return <About />;
       case 'services': return <Services />;
       case 'pitch': return <PitchForm />;
-      default: return <Hero onNavigate={navigate} />;
+      default: return <Hero onNavigate={navigate} onLogoComplete={handleLogoComplete} />;
     }
   };
 
   return (
     <>
-      <Header activeTab={activeTab} setActiveTab={navigate} />
+      <Header activeTab={activeTab} setActiveTab={navigate} showNavButtons={logoCompleted} />
 
       <main key={activeTab} style={{ paddingTop: '80px' }}>
         {renderPage()}

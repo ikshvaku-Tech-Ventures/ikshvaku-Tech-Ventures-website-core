@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { ArrowRight } from 'lucide-react';
 import './Hero.css';
 
@@ -11,7 +11,7 @@ const ARROW_END = 110;
 const TEXT_LEFT = 3;
 const TEXT_RIGHT = 97;
 
-export default function Hero({ onNavigate }) {
+export default function Hero({ onNavigate, onLogoComplete }) {
   const [phase, setPhase] = useState('arrow'); // 'arrow' → 'logo' → 'content'
 
   const slokaChars = useMemo(() => {
@@ -40,12 +40,17 @@ export default function Hero({ onNavigate }) {
     // Arrow finishes → show logo
     const logoTimer = setTimeout(() => setPhase('logo'), (ARROW_DELAY + ARROW_DURATION + 0.5) * 1000);
     // Logo holds → show content
-    const contentTimer = setTimeout(() => setPhase('content'), (ARROW_DELAY + ARROW_DURATION + 3.0) * 1000);
+    const contentTimer = setTimeout(() => {
+      setPhase('content');
+      if (onLogoComplete) {
+        onLogoComplete();
+      }
+    }, (ARROW_DELAY + ARROW_DURATION + 3.0) * 1000);
     return () => {
       clearTimeout(logoTimer);
       clearTimeout(contentTimer);
     };
-  }, []);
+  }, [onLogoComplete]);
 
   return (
     <section className="hero">

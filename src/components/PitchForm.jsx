@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useAnimations';
 import './PitchForm.css';

@@ -17,26 +17,45 @@ export default function PitchForm() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       alert('Please complete all required fields.');
       return;
     }
 
-    const subject = encodeURIComponent(`New Inquiry from ${form.name} - ${form.company || 'Individual'}`);
-    const body = encodeURIComponent(`Name: ${form.name}
-Email: ${form.email}
-Organization: ${form.company || 'N/A'}
-Area of Interest: ${form.service}
-
-Message:
-${form.message}`);
-    
-    window.location.href = `mailto:manasram@ikshvakutechventures.com,madhusudhan@ikshvakutechventures.com?subject=${subject}&body=${body}`;
-
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1200);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: "58a48f41-9f70-4145-ba77-addcd1429179",
+          subject: `New Inquiry from ${form.name} - ${form.company || 'Individual'}`,
+          from_name: form.name,
+          email: form.email,
+          Organization: form.company || 'N/A',
+          Area_of_Interest: form.service,
+          message: form.message,
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        alert('Something went wrong. Please try again later.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {

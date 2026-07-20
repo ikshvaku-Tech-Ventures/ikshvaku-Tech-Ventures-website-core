@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { ArrowRight } from 'lucide-react';
+import SriChakra from './SriChakra';
 import './Hero.css';
 
 const SLOKA_LINE = 'कायेन वाचा मनसेन्द्रियैर्वा । बुद्ध्यात्मना वा प्रकृतिस्वभावात् । करोमि यद्यत्सकलं परस्मै । नारायणयेति समर्पयामि ॥';
@@ -11,7 +12,7 @@ const ARROW_END = 110;
 const TEXT_LEFT = 3;
 const TEXT_RIGHT = 97;
 
-const RAM_STRING = "राम ".repeat(100);
+
 
 export default function Hero({ onNavigate, onLogoComplete, skipAnimation = false }) {
   const [phase, setPhase] = useState(skipAnimation ? 'content' : 'arrow'); // 'arrow' → 'logo' → 'content'
@@ -60,12 +61,7 @@ export default function Hero({ onNavigate, onLogoComplete, skipAnimation = false
 
   return (
     <section className="hero">
-      {phase !== 'content' && (
-        <div className="ram-borders" aria-hidden="true">
-          <div className="ram-border-top">{RAM_STRING}</div>
-          <div className="ram-border-bottom">{RAM_STRING}</div>
-        </div>
-      )}
+      {phase !== 'content' && <SriChakra />}
 
       {/* === Arrow + Sloka Trail === */}
       {phase === 'arrow' && (

@@ -110,7 +110,7 @@ export default function Hero({ onNavigate, onLogoComplete }) {
 
           <div className="hero-line hero-line--4">
             <div className="hero-actions">
-              <button onClick={() => onNavigate('services')} className="btn btn--filled">
+              <button onClick={() => onNavigate('products')} className="btn btn--filled">
                 Our work <ArrowRight size={14} />
               </button>
               <button onClick={() => onNavigate('about')} className="btn">

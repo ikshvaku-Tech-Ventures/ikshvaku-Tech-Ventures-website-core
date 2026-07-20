@@ -111,7 +111,9 @@
 }
 
 @media (max-width: 768px) {
-  .mobile-menu-toggle { display: block; }
+  .mobile-menu-toggle {
+    display: block;
+  }
 
   .nav-links {
     position: fixed;

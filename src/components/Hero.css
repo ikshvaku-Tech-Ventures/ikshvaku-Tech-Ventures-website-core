@@ -40,10 +40,23 @@
 }
 
 @keyframes arrowFly {
-  0%   { left: -10%; opacity: 0; }
-  2%   { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { left: 110%; opacity: 0; }
+  0% {
+    left: -10%;
+    opacity: 0;
+  }
+
+  2% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
 }
 
 /* ── Phase 1: The Sloka Trail ── */
@@ -73,8 +86,13 @@
 }
 
 @keyframes charTrail {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 /* ── Phase 2: Logo Reveal ── */
@@ -116,17 +134,45 @@
 }
 
 @keyframes logoReveal {
-  0%   { opacity: 0; transform: scale(0.85); }
-  30%  { opacity: 1; transform: scale(1); }
-  75%  { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.02); }
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.02);
+  }
 }
 
 @keyframes arcPulse {
-  0%   { opacity: 0; transform: scale(0.8); }
-  25%  { opacity: 1; }
-  70%  { opacity: 1; }
-  100% { opacity: 0; transform: scale(1.1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
 }
 
 /* ── Phase 3: Hero Content ── */
@@ -140,12 +186,15 @@
 .hero-content--visible .hero-line--1 {
   animation: fadeIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
 }
+
 .hero-content--visible .hero-line--2 {
   animation: fadeIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
 }
+
 .hero-content--visible .hero-line--3 {
   animation: fadeIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s forwards;
 }
+
 .hero-content--visible .hero-line--4 {
   animation: fadeIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.0s forwards;
 }
@@ -189,13 +238,19 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .hero { min-height: 90vh; padding: 7rem 0 4rem; }
+  .hero {
+    min-height: 90vh;
+    padding: 7rem 0 4rem;
+  }
+
   .hero-actions {
     flex-direction: column;
     align-items: center;
   }
 
-  .flying-arrow { width: 100px; }
+  .flying-arrow {
+    width: 100px;
+  }
 
   .sloka-trail {
     font-size: 0.7rem;

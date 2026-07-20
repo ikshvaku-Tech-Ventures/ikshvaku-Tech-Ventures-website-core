@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { ArrowRight } from 'lucide-react';
+import SriChakra from './SriChakra';
 import './Hero.css';
 
 const SLOKA_LINE = 'कायेन वाचा मनसेन्द्रियैर्वा । बुद्ध्यात्मना वा प्रकृतिस्वभावात् । करोमि यद्यत्सकलं परस्मै । नारायणयेति समर्पयामि ॥';
@@ -11,8 +12,10 @@ const ARROW_END = 110;
 const TEXT_LEFT = 3;
 const TEXT_RIGHT = 97;
 
-export default function Hero({ onNavigate, onLogoComplete }) {
-  const [phase, setPhase] = useState('arrow'); // 'arrow' → 'logo' → 'content'
+
+
+export default function Hero({ onNavigate, onLogoComplete, skipAnimation = false }) {
+  const [phase, setPhase] = useState(skipAnimation ? 'content' : 'arrow'); // 'arrow' → 'logo' → 'content'
 
   const slokaChars = useMemo(() => {
     const chars = SLOKA_LINE.split('');
@@ -37,6 +40,10 @@ export default function Hero({ onNavigate, onLogoComplete }) {
   }, []);
 
   useEffect(() => {
+    if (skipAnimation) {
+      if (onLogoComplete) onLogoComplete();
+      return;
+    }
     // Arrow finishes → show logo
     const logoTimer = setTimeout(() => setPhase('logo'), (ARROW_DELAY + ARROW_DURATION + 0.5) * 1000);
     // Logo holds → show content
@@ -50,10 +57,11 @@ export default function Hero({ onNavigate, onLogoComplete }) {
       clearTimeout(logoTimer);
       clearTimeout(contentTimer);
     };
-  }, [onLogoComplete]);
+  }, [onLogoComplete, skipAnimation]);
 
   return (
     <section className="hero">
+      {phase !== 'content' && <SriChakra />}
 
       {/* === Arrow + Sloka Trail === */}
       {phase === 'arrow' && (
@@ -94,15 +102,15 @@ export default function Hero({ onNavigate, onLogoComplete }) {
 
           <div className="hero-line hero-line--3">
             <p className="hero-subtitle">
-              We architect intelligent systems rooted in clarity and purpose — 
-              Agentic AI, Geospatial intelligence, and sovereign digital 
-              infrastructure for the organizations shaping tomorrow.
+              Guided by the yoga of action and clarity of purpose, we are a pioneer product building and design firm. 
+              We apply advanced engineering to distributed systems and design frugal, intelligent AI solutions to build 
+              the organizations of tomorrow.
             </p>
           </div>
 
           <div className="hero-line hero-line--4">
             <div className="hero-actions">
-              <button onClick={() => onNavigate('services')} className="btn btn--filled">
+              <button onClick={() => onNavigate('products')} className="btn btn--filled">
                 Our work <ArrowRight size={14} />
               </button>
               <button onClick={() => onNavigate('about')} className="btn">

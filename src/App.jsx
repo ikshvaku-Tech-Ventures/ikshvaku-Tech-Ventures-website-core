@@ -8,6 +8,10 @@ import PitchForm from './components/PitchForm';
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [logoCompleted, setLogoCompleted] = useState(activeTab !== 'home');
+  
+  const [hasVisited, setHasVisited] = useState(() => {
+    return sessionStorage.getItem('ikshvaku_visited') === 'true';
+  });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'light');
@@ -15,12 +19,14 @@ function App() {
 
   const navigate = (tab) => {
     setActiveTab(tab);
-    setLogoCompleted(tab !== 'home');
+    setLogoCompleted(tab !== 'home' || hasVisited);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLogoComplete = useCallback(() => {
     setLogoCompleted(true);
+    sessionStorage.setItem('ikshvaku_visited', 'true');
+    setHasVisited(true);
   }, []);
 
   const renderPage = () => {
@@ -28,7 +34,7 @@ function App() {
       case 'about': return <About />;
       case 'products': return <Products />;
       case 'pitch': return <PitchForm />;
-      default: return <Hero onNavigate={navigate} onLogoComplete={handleLogoComplete} />;
+      default: return <Hero onNavigate={navigate} onLogoComplete={handleLogoComplete} skipAnimation={hasVisited} />;
     }
   };
 

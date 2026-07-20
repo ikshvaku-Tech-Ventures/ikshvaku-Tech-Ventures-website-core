@@ -13,8 +13,8 @@ const TEXT_RIGHT = 97;
 
 const RAM_STRING = "राम ".repeat(100);
 
-export default function Hero({ onNavigate, onLogoComplete }) {
-  const [phase, setPhase] = useState('arrow'); // 'arrow' → 'logo' → 'content'
+export default function Hero({ onNavigate, onLogoComplete, skipAnimation = false }) {
+  const [phase, setPhase] = useState(skipAnimation ? 'content' : 'arrow'); // 'arrow' → 'logo' → 'content'
 
   const slokaChars = useMemo(() => {
     const chars = SLOKA_LINE.split('');
@@ -39,6 +39,10 @@ export default function Hero({ onNavigate, onLogoComplete }) {
   }, []);
 
   useEffect(() => {
+    if (skipAnimation) {
+      if (onLogoComplete) onLogoComplete();
+      return;
+    }
     // Arrow finishes → show logo
     const logoTimer = setTimeout(() => setPhase('logo'), (ARROW_DELAY + ARROW_DURATION + 0.5) * 1000);
     // Logo holds → show content
@@ -52,7 +56,7 @@ export default function Hero({ onNavigate, onLogoComplete }) {
       clearTimeout(logoTimer);
       clearTimeout(contentTimer);
     };
-  }, [onLogoComplete]);
+  }, [onLogoComplete, skipAnimation]);
 
   return (
     <section className="hero">

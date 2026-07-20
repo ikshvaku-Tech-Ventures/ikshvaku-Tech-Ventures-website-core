@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Services from './components/Services';
+import Products from './components/Products';
 import PitchForm from './components/PitchForm';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
   const renderPage = () => {
     switch (activeTab) {
       case 'about': return <About />;
-      case 'services': return <Services />;
+      case 'products': return <Products />;
       case 'pitch': return <PitchForm />;
       default: return <Hero onNavigate={navigate} onLogoComplete={handleLogoComplete} />;
     }
@@ -57,7 +57,7 @@ function App() {
                   <h4>Navigate</h4>
                   <ul className="footer-links">
                     <li><button onClick={() => navigate('about')}>About</button></li>
-                    <li><button onClick={() => navigate('services')}>Services</button></li>
+                    <li><button onClick={() => navigate('products')}>Products</button></li>
                     <li><button onClick={() => navigate('pitch')}>Contact</button></li>
                   </ul>
                 </div>

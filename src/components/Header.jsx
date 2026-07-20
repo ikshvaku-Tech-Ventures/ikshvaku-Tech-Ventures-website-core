@@ -31,7 +31,7 @@ export default function Header({ activeTab, setActiveTab, showNavButtons = true 
             {[
               ['home', 'Home'],
               ['about', 'About'],
-              ['services', 'Services'],
+              ['products', 'Products'],
               ['pitch', 'Contact'],
             ].map(([id, label]) => (
               <li key={id} className="nav-item">

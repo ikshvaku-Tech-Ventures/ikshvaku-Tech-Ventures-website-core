@@ -3,6 +3,13 @@ import { ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useAnimations';
 import './PitchForm.css';
 
+// Web3Forms access keys. Submissions are sent to all keys in this array.
+// Once your co-founder generates their access key, add it to this list.
+const WEB3FORMS_ACCESS_KEYS = [
+  "58a48f41-9f70-4145-ba77-addcd1429179", // Manas Ram
+  "84856dd3-1407-46fd-83ca-0c19f340bad0", // Madhusudhan (madhusudhan@ikshvakutechventures.com)
+].filter(Boolean);
+
 export default function PitchForm() {
   const [form, setForm] = useState({
     name: '', email: '', company: '', website: '', service: 'Agentic AI', message: '',
@@ -27,25 +34,29 @@ export default function PitchForm() {
     setLoading(true);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: "58a48f41-9f70-4145-ba77-addcd1429179",
-          subject: `New Inquiry from ${form.name} - ${form.company || 'Individual'}`,
-          from_name: form.name,
-          email: form.email,
-          Organization: form.company || 'N/A',
-          Area_of_Interest: form.service,
-          message: form.message,
-        })
-      });
+      const submissions = WEB3FORMS_ACCESS_KEYS.map((key) =>
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: key,
+            subject: `New Inquiry from ${form.name} - ${form.company || 'Individual'}`,
+            from_name: form.name,
+            email: form.email,
+            Organization: form.company || 'N/A',
+            Area_of_Interest: form.service,
+            message: form.message,
+          })
+        }).then((res) => res.json())
+      );
 
-      const result = await response.json();
-      if (result.success) {
+      const results = await Promise.all(submissions);
+      const anySuccess = results.some((r) => r.success);
+
+      if (anySuccess) {
         setSubmitted(true);
       } else {
         alert('Something went wrong. Please try again later.');

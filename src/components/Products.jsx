@@ -195,10 +195,10 @@ export default function Products({ onNavigate }) {
               key={b.id}
               className={`spine-node-btn ${activeBranch === b.id ? 'is-active' : ''}`}
               onClick={() => scrollToBranch(b.id)}
-              aria-label={`Jump to ${b.line}: ${b.project}`}
+              aria-label={`Jump to Pillar ${b.num}: ${b.line}`}
             >
               <span className="spine-node-dot" />
-              <span className="spine-node-label">{b.num} · {b.project}</span>
+              <span className="spine-node-label">{b.num} · {b.line}</span>
             </button>
           ))}
         </div>

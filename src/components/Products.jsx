@@ -30,6 +30,8 @@ const BRANCHES = [
     project: 'Elder Concierge',
     tag: 'Internal Incubation',
     status: 'In Stealth',
+    progress: 40,
+    progressLabel: 'Incubation Progress',
     badge: 'Ambient Voice AI',
     summary: 'Voice first ambient care and mobility dispatch for senior independence in native dialects.'
   },
@@ -40,6 +42,8 @@ const BRANCHES = [
     project: 'Rayton',
     tag: 'Deep Tech Semiconductor',
     status: 'In Active Build',
+    progress: 80,
+    progressLabel: 'Development Progress',
     badge: 'Engineered Exfoliation',
     summary: 'Patented proton beam wafer exfoliation cutting AI chip power consumption by up to 70%.'
   },
@@ -50,6 +54,8 @@ const BRANCHES = [
     project: 'RezFlow',
     tag: 'Co Founded Business',
     status: 'Live in USA 🇺🇸',
+    progress: 100,
+    progressLabel: 'Live Deployment',
     badge: 'Real Time ATS AI',
     summary: 'Intelligent resume optimization and ATS parsing co founded with Find Fulfilling Work.'
   }
@@ -305,6 +311,22 @@ export default function Products({ onNavigate }) {
                   <span className="pod-line-name">{b.line}</span>
                   <p className="pod-summary">{b.summary}</p>
 
+                  {/* Progress indicator in pod card */}
+                  {b.progress !== undefined && (
+                    <div className="pod-progress-module">
+                      <div className="pod-progress-row">
+                        <span className="pod-progress-caption">{b.progressLabel}</span>
+                        <span className="pod-progress-num">{b.progress}%</span>
+                      </div>
+                      <div className="pod-progress-bar">
+                        <div
+                          className={`pod-progress-fill ${b.progress === 100 ? 'pod-progress-fill--complete' : ''}`}
+                          style={{ width: `${b.progress}%` }}
+                        />
+                      </div>
+                    </div>
+                  )}
+
                   <div className="pod-footer">
                     <span className="pod-badge">{b.badge}</span>
                     <span className="pod-cta-arrow">
@@ -352,6 +374,45 @@ export default function Products({ onNavigate }) {
                 freely in their mother tongue, and within seconds, trusted mobility is secured, while their
                 family is quietly and reliably kept in the loop.
               </p>
+
+              {/* Dignified Architectural Progress Gauge */}
+              <div className="dignified-progress-box">
+                <div className="progress-box-header">
+                  <div>
+                    <span className="progress-kicker">Incubation Velocity</span>
+                    <h4 className="progress-headline">Core Telephony and Speech AI</h4>
+                  </div>
+                  <div className="progress-box-val">
+                    <span className="progress-pct">40%</span>
+                    <span className="progress-status-sub">Completed</span>
+                  </div>
+                </div>
+
+                <div className="progress-track-outer" aria-label="Elder Concierge Progress: 40%">
+                  <div className="progress-track-fill" style={{ width: '40%' }}>
+                    <span className="progress-fill-glow" />
+                  </div>
+                </div>
+
+                <div className="progress-milestones">
+                  <div className="milestone-item is-done">
+                    <span className="milestone-dot" />
+                    <span className="milestone-name">Architecture</span>
+                  </div>
+                  <div className="milestone-item is-active">
+                    <span className="milestone-dot" />
+                    <span className="milestone-name">Telephony Core (40%)</span>
+                  </div>
+                  <div className="milestone-item">
+                    <span className="milestone-dot" />
+                    <span className="milestone-name">Field Pilots</span>
+                  </div>
+                  <div className="milestone-item">
+                    <span className="milestone-dot" />
+                    <span className="milestone-name">Public Launch</span>
+                  </div>
+                </div>
+              </div>
 
               <div className="branch-highlights">
                 <div className="highlight-item">
@@ -478,6 +539,45 @@ export default function Products({ onNavigate }) {
                 from the exact same crystal, all without requiring existing foundries to retool.
                 We are architecting Rayton’s upcoming global web flagship and digital identity.
               </p>
+
+              {/* Dignified Architectural Progress Gauge */}
+              <div className="dignified-progress-box">
+                <div className="progress-box-header">
+                  <div>
+                    <span className="progress-kicker">Development Velocity</span>
+                    <h4 className="progress-headline">Digital Flagship and 3D Cleanroom</h4>
+                  </div>
+                  <div className="progress-box-val">
+                    <span className="progress-pct">80%</span>
+                    <span className="progress-status-sub">Completed</span>
+                  </div>
+                </div>
+
+                <div className="progress-track-outer" aria-label="Rayton Progress: 80%">
+                  <div className="progress-track-fill" style={{ width: '80%' }}>
+                    <span className="progress-fill-glow" />
+                  </div>
+                </div>
+
+                <div className="progress-milestones">
+                  <div className="milestone-item is-done">
+                    <span className="milestone-dot" />
+                    <span className="milestone-name">Physics Model</span>
+                  </div>
+                  <div className="milestone-item is-done">
+                    <span className="milestone-dot" />
+                    <span className="milestone-name">Cleanroom 3D</span>
+                  </div>
+                  <div className="milestone-item is-active">
+                    <span className="milestone-dot" />
+                    <span className="milestone-name">Flagship Build (80%)</span>
+                  </div>
+                  <div className="milestone-item">
+                    <span className="milestone-dot" />
+                    <span className="milestone-name">Global Reveal</span>
+                  </div>
+                </div>
+              </div>
 
               <div className="wafer-metrics-row">
                 <div className="metric-box">

@@ -31,8 +31,8 @@ function App() {
 
   const renderPage = () => {
     switch (activeTab) {
-      case 'about': return <About />;
-      case 'products': return <Products />;
+      case 'about': return <About onNavigate={navigate} />;
+      case 'products': return <Products onNavigate={navigate} />;
       case 'pitch': return <PitchForm />;
       default: return <Hero onNavigate={navigate} onLogoComplete={handleLogoComplete} skipAnimation={hasVisited} />;
     }
@@ -63,7 +63,7 @@ function App() {
                   <h4>Navigate</h4>
                   <ul className="footer-links">
                     <li><button onClick={() => navigate('about')}>About</button></li>
-                    <li><button onClick={() => navigate('products')}>Products</button></li>
+                    <li><button onClick={() => navigate('products')}>Ventures</button></li>
                     <li><button onClick={() => navigate('pitch')}>Contact</button></li>
                   </ul>
                 </div>
@@ -84,7 +84,7 @@ function App() {
                   href="https://www.linkedin.com/company/133447831/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
+                  className="social-link social-link--linkedin"
                   aria-label="LinkedIn"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -97,7 +97,7 @@ function App() {
                   href="https://www.instagram.com/ikshvakutechventures?stkn=YmhqcmFhZHJwZHVs&utm_source=qr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
+                  className="social-link social-link--instagram"
                   aria-label="Instagram"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

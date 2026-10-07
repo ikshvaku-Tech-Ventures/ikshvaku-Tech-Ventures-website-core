@@ -14,12 +14,6 @@ export default function SriChakra() {
   const cx = 500, cy = 500; // center
   const r = 420; // outer square half-size
 
-  // Helper: point on circle
-  const pt = (angle, radius) => {
-    const rad = (angle - 90) * (Math.PI / 180);
-    return `${cx + radius * Math.cos(rad)},${cy + radius * Math.sin(rad)}`;
-  };
-
   // Generate lotus petals as SVG path arcs
   const lotusPetals = (count, innerR, outerR) => {
     const petals = [];
@@ -113,7 +107,7 @@ export default function SriChakra() {
             ))}
             {/* Gates (T-shaped openings on each side) */}
             {[0, 90, 180, 270].map((angle) => {
-              const gateW = 40, gateD = 30;
+              const gateW = 40;
               const rad = (angle) * (Math.PI / 180);
               const cos = Math.cos(rad), sin = Math.sin(rad);
               const baseX = cx + (r - 24) * sin;
